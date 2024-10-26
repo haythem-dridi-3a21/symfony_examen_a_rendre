@@ -1,0 +1,32 @@
+<a href="{{ path('app_displayplay') }}">List</a>
+<a href="{{ path('app_displayplay_order') }}">Order By Title And Duration</a>
+<table border="1">
+    <tr>
+        <td>ID</td>
+        <td>Title</td>
+        <td>Genre</td>
+        <td>Duration</td>
+        <td colspan="4">Actions</td>
+    </tr>
+
+    {% for theatre in theatres %}
+        <tr>
+            <td>{{ theatre.id }}</td>
+            <td>{{ theatre.title | upper }}</td>
+            <td>{{ theatre.genre }}</td>
+            <td>{{ theatre.Duration }}</td>
+            <td>
+                <a href="{{ path('app_add_show') }}">Add Show</a>
+            </td>
+              <td>
+                <a href="{{ path('app_total_number',{'id': theatre.id}) }}">Total Number</a>
+            </td>
+            <td>
+                <a href="{{ path('update_theatre_play',{'id': theatre.id}) }}">EDIT</a>
+            </td>
+            <td>
+                <a href="{{ path('delete_theatre_play',{'id': theatre.id}) }}">DELETE</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
